@@ -51,7 +51,7 @@ jobs:
           username: ubuntu                     # EC2 user
           key: ${{ secrets.EC2_SSH_KEY }}     # Private key secret
           script: |
-            cd /home/ubuntu/your-project-directory
-            docker-compose pull
-            docker-compose down
-            docker-compose up -d
+            cd /home/ubuntu/fusionpact-devops-challenge 
+            docker compose pull
+            docker compose down
+            docker compose up -d
