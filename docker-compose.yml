@@ -24,6 +24,7 @@ services:
     container_name: fusionpact-prometheus
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus        # <-- Persistent data for metrics
     ports:
       - "9090:9090"
     depends_on:
@@ -35,6 +36,12 @@ services:
     container_name: fusionpact-grafana
     ports:
       - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana      # <-- Persistent data for dashboards, alerts
     depends_on:
       - prometheus
     restart: unless-stopped
+
+volumes:
+  prometheus-data:
+  grafana-data:
